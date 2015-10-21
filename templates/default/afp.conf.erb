@@ -1,0 +1,18 @@
+;
+; Netatalk 3.x configuration file
+;
+
+[Global]
+<% if node['time_machine']['spotlight'] %>
+spotlight = yes
+<% end %>
+
+<% if node['time_machine']['homes']['enabled'] %>
+[Homes]
+basedir regex = <%= node['time_machine']['homes']['regex'] %>
+<% end %>
+
+[<%= node['time_machine']['name'] %>]
+path = <%= node['time_machine']['path'] %>
+time machine = yes
+vol size limit = <%= node['time_machine']['volume_size'] %>
