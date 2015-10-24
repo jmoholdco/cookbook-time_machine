@@ -54,8 +54,8 @@ shadow_hash = encrypt_password(raw_password['password'])
 
 user 'morgan' do
   comment 'J. Morgan Lieberthal'
-  uid '501'
-  gid '20'
+  uid 501
+  gid 20
   home '/home/morgan'
   shell '/bin/zsh'
   manage_home true
@@ -66,4 +66,11 @@ time_machine_volume 'TimeMachine' do
   path '/srv/time_machine'
   allowed_users %w(morgan)
   allowed_user_group 'timemachine'
+end
+
+directory '/srv/time_machine' do
+  recursive true
+  owner 'morgan'
+  group 'staff'
+  mode '0755'
 end

@@ -42,8 +42,8 @@ RSpec.describe 'time_machine::volumes', :vault do
 
         it 'creates the user' do
           expect(chef_run).to create_user('morgan').with(
-            uid: '501',
-            gid: '20',
+            uid: 501,
+            gid: 20,
             home: '/home/morgan',
             shell: '/bin/zsh'
           )
