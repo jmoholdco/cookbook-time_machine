@@ -34,7 +34,12 @@ extend ChefHelpers
 include_recipe 'chef-vault'
 include_recipe 'time_machine::default'
 
-group 'games' do
+staff_group_name = value_for_platform_family(
+  'debian' => 'dialout',
+  'rhel' => 'games'
+)
+
+group staff_group_name do
   gid '20'
   action :remove
 end

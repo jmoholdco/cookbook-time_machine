@@ -37,7 +37,6 @@ class Chef
         end
 
         return if @configured
-        # create_config_directory
         create_allowed_user_group
         create_volume_path
 
@@ -78,6 +77,7 @@ class Chef
         directory new_resource.path do
           recursive true
           group new_resource.allowed_user_group
+          mode '0664'
         end
       end
 
