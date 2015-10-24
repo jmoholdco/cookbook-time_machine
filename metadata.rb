@@ -7,3 +7,5 @@ long_description 'Installs/Configures time_machine'
 version '0.1.1'
 
 depends 'netatalk', '~> 0.1'
+depends 'chef-vault', '~> 1.3'
+depends 'chef-sugar', '~> 3.1'

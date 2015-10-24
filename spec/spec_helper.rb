@@ -1,5 +1,6 @@
 require 'chefspec'
 require 'chefspec/berkshelf'
+require 'chef-vault/test_fixtures'
 
 require_relative 'support/shared_examples'
 
@@ -18,4 +19,6 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 
   config.file_cache_path = '/var/chef/cache'
+  config.fail_fast = true
+  config.include ChefVault::TestFixtures.rspec_shared_context(true), vault: true
 end

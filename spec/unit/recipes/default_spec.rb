@@ -16,16 +16,6 @@ RSpec.shared_examples 'the default recipe' do
   it 'installs the package avahi' do
     expect(chef_run).to install_package 'avahi'
   end
-
-  it 'creates the conf directory' do
-    expect(chef_run).to create_directory(File.dirname(conf))
-  end
-
-  it 'creates the template for the configuration file' do
-    expect(chef_run).to create_template('afp.conf').with(
-      path: conf
-    )
-  end
 end
 
 RSpec.describe 'time_machine::default' do

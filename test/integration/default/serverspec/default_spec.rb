@@ -1,16 +1,8 @@
 require 'spec_helper'
+require 'shared_examples'
 
 RSpec.describe 'time_machine::default' do
-  describe command('/usr/sbin/afpd -V'), unless: os[:release].to_i == 14 do
-    its(:exit_status) { is_expected.to eq 0 }
-    its(:stdout) { is_expected.to match(/afpd 3\.[0-9]\.[0-9]/) }
-  end
-
-  describe command('/usr/local/sbin/afpd -V'), if: os[:release].to_i == 14 do
-    its(:exit_status) { is_expected.to eq 0 }
-    its(:stdout) { is_expected.to match(/afpd 3\.[0-9]\.[0-9]/) }
-  end
-
+  it_behaves_like 'any time_machine recipe'
   case os[:family]
   when 'redhat'
     describe file('/etc/netatalk/afp.conf') do

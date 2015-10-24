@@ -12,5 +12,7 @@ default['time_machine'] = {
   'homes' => {
     'enabled' => false,
     'regex' => '/home'
-  }
+  },
+
+  'volumes' => []
 }

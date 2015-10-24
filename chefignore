@@ -98,3 +98,7 @@ Vagrantfile
 # Travis #
 ##########
 .travis.yml
+
+# Documentation #
+#################
+*/doc/*

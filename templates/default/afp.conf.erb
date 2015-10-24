@@ -12,7 +12,7 @@ spotlight = yes
 basedir regex = <%= node['time_machine']['homes']['regex'] %>
 <% end %>
 
-[<%= node['time_machine']['name'] %>]
-path = <%= node['time_machine']['path'] %>
-time machine = yes
-vol size limit = <%= node['time_machine']['volume_size'] %>
+<% @volumes.each do |volume| %>
+<% volume = render_config(volume) %>
+<%= volume.to_s %>
+<% end %>

@@ -21,9 +21,21 @@ platforms:
     run_list: recipe[apt]
   - name: debian-8.1
     run_list: recipe[apt]
+    attributes:
+      netatalk:
+        install_method: 'deb_build'
   - name: centos-7.1
 
 suites:
   - name: default
-    run_list: recipe[time_machine]
+    run_list: recipe[test::default]
     attributes:
+  - name: two_volumes
+    run_list: recipe[test::two_volumes]
+    attributes:
+  - name: full
+    run_list:
+      - recipe[setup]
+      - recipe[jml-defaults]
+      - recipe[time_machine::volumes]
+    includes: centos-7.1

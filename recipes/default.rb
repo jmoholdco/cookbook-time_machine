@@ -10,16 +10,14 @@ end
 
 include_recipe 'netatalk'
 
-directory ::File.dirname(node['netatalk']['conf_file']) do
-  recursive true
-end
-
-directory node['time_machine']['path'] do
-  recursive true
-end
-
 template 'afp.conf' do
   source 'afp.conf.erb'
+  owner 'root'
+  group node['root_group']
   path node['netatalk']['conf_file']
+  mode '0644'
+  helpers TimeMachineCookbook::TemplateHelpers
+  variables lazy { { volumes: node.run_state['time_machine_volumes'] } }
+  action :nothing
   notifies :restart, 'service[netatalk]', :immediately
 end
